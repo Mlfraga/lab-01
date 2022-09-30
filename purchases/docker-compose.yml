@@ -10,7 +10,7 @@ services:
     environment:
       - POSTGRESQL_USERNAME=docker
       - POSTGRESQL_PASSWORD=docker
-      - POSTGRESQL_DATABASE=app
+      - POSTGRESQL_DATABASE=purchases
     volumes:
       - 'postgresql_data:/bitnami/postgresql'
 
