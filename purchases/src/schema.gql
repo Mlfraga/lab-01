@@ -11,8 +11,8 @@ type Product {
 type Purchase {
   id: ID!
   status: PurchaseStatus!
-  product: Product!
   created_at: DateTime!
+  product: Product!
 }
 
 """Available Purchases Status"""
@@ -29,6 +29,7 @@ scalar DateTime
 
 type Customer {
   id: ID!
+  auth_user_id: ID!
   purchases: [Purchase!]!
 }
 
