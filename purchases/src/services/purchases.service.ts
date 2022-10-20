@@ -45,20 +45,9 @@ export class PurchasesService {
       where: { id: customerId },
     });
 
-    console.log({
-      customer: {
-        authUserId: customer.auth_user_id,
-      },
-      product: {
-        id: createdPurchase.id,
-        title: product.title,
-        slug: product.slug,
-      },
-    });
-
     this.kafka.emit('purchases.new-purchase', {
       customer: {
-        authUserId: customer.auth_user_id,
+        authUserId: customer.authUserId,
       },
       product: {
         id: createdPurchase.id,
