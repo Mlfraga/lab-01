@@ -1,16 +1,18 @@
-import {
-  getAccessToken,
-  useUser,
-  withPageAuthRequired,
-} from "@auth0/nextjs-auth0";
+import { gql, useQuery } from "@apollo/client";
+import { getAccessToken, useUser } from "@auth0/nextjs-auth0";
+import { withApollo } from "../../lib/withApollo";
 
-export default function Home() {
+function Home() {
   const user = useUser();
+  // const { data } = useQuery(PRODUCTS_QUERY);
 
   console.log("user", user);
 
   return (
     <div>
+      {/* <pre>
+        <code>{JSON.stringify(data, null, 2)}</code>
+      </pre> */}
       <h1>Home</h1>
       <pre>{JSON.stringify(user, null, 2)}</pre>
 
@@ -25,6 +27,10 @@ export const getServerSideProps = async ({ req, res }) => {
   console.log("accesToken", accesToken);
 
   return {
-    props: {},
+    props: {
+      apolloState: {},
+    },
   };
 };
+
+export default withApollo(Home);
