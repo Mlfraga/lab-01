@@ -2,7 +2,7 @@ overwrite: true
 
 schema: "http://localhost:3332/graphql"
 
-documents: "./src/graphql/**/*.gql"
+documents: "./src/graphql/**/*.graphql"
 
 generates:
   src/graphql/generated/graphql.tsx:
