@@ -9,12 +9,14 @@ export const config = {
 };
 
 export default async function Handler(req: NextApiRequest, res: NextApiResponse) {
-  const accesToken = await getAccessToken(req, res);
+  const {accessToken} = await getAccessToken(req, res);
+
+  console.log('accesToken', accessToken);
 
   return httpProxyMiddleware(req, res, {
     target: "http://localhost:3332/graphql",
     headers: {
-      Authorization: `Bearer ${accesToken}`,
+      Authorization: `Bearer ${accessToken}`,
     },
   });
 }

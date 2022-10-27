@@ -11,13 +11,11 @@ export class CustomersService {
   constructor(private prisma: PrismaService) {}
 
   async getCustomerByAuthUserId(authUserId: string) {
-    console.log('opa');
     const customers = await this.prisma.customer.findUnique({
       where: {
         authUserId: authUserId,
       },
     });
-    console.log('customers: ', customers);
     return customers;
   }
 

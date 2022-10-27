@@ -23,6 +23,7 @@ export class CustomersResolver {
   @Query(() => Customer)
   @UseGuards(AuthorizationGuard)
   me(@CurrentUser() user: AuthUser) {
+    console.log('opsaofpasio');
     return this.customersService.getCustomerByAuthUserId(user.sub);
   }
 
