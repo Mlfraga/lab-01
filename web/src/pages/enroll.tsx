@@ -10,6 +10,7 @@ import {
 } from "../graphql/generated/pagePublic";
 import {
   GetProductsQuery,
+  useCreatePurchaseMutation,
   // useCreatePurchaseMutation,
 } from "../graphql/generated/graphql";
 import { withApollo } from "../lib/withApollo";
@@ -19,14 +20,14 @@ interface EnrollProps {
 }
 
 function Enroll({ data }: EnrollProps) {
-  // const [createPurchase] = useCreatePurchaseMutation();
+  const [createPurchase] = useCreatePurchaseMutation();
 
   async function handlePurchaseProduct(productId: string) {
-    // await createPurchase({
-    //   variables: {
-    //     productId,
-    //   },
-    // });
+    await createPurchase({
+      variables: {
+        productId,
+      },
+    });
 
     alert("Compra realizada com sucesso!");
   }
